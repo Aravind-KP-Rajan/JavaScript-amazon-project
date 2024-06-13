@@ -1,5 +1,6 @@
-import{cart /* as myCart */} from '../data/cart.js'; //importing using module
-
+//importing using module
+import { products } from '../data/products.js';
+import{cart /* as myCart */} from '../data/cart.js'; 
 
 /* Main idea of JavaScript
   (1) save the data
