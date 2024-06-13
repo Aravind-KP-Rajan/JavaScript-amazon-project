@@ -1,3 +1,4 @@
-const cart = [];
+//module
+export const cart = [];
 
 
