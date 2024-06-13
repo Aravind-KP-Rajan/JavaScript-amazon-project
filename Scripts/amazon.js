@@ -1,6 +1,7 @@
 //importing using module
 import { products } from '../data/products.js';
 import{cart /* as myCart */ , addToCart} from '../data/cart.js';
+import { formatCurrency } from './utils/money.js';
 
 
 /* Main idea of JavaScript
@@ -75,7 +76,7 @@ products.forEach((product)=>{
                 </div>
 
                 <div class="product-price">
-                  ${(product.priceCents / 100).toFixed(2)/* to show number with 2 decimal values */}
+                  $${formatCurrency(product.priceCents)/* to show number with 2 decimal values */}
                 </div>
 
                 <div class="product-quantity-container">
