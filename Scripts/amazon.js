@@ -1,6 +1,7 @@
 //importing using module
 import { products } from '../data/products.js';
-import{cart /* as myCart */} from '../data/cart.js'; 
+import{cart /* as myCart */ , addToCart} from '../data/cart.js';
+
 
 /* Main idea of JavaScript
   (1) save the data
@@ -133,12 +134,31 @@ timeoutIds (one for each product). */
 
 let addedMessageTimeoutId;
 
+
+
+function updateCartQuantity(){
+  //to calculate the cart quantity
+   /* 
+    (1) calculate the quantity
+    (2) put the quantity on page (using DOM)
+   */
+
+    let cartQuantity = 0;
+
+    cart.forEach((cartItem)=>{
+     cartQuantity+=cartItem.quantity;
+    })
+ 
+    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+}
+
 //(3) Make it interactive
 
 document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
     button.addEventListener('click', ()=>{
     // console.log('Added products')
     const {productId} = button.dataset;
+    
     //product-id is converted from kebab-case to camelCase productId
     // console.log(productName); 
 
@@ -149,41 +169,10 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
       (3) if it's not in the cart add it to the cart
     */
 
-    let matchingItem;
+      addToCart(productId);
+      updateCartQuantity();
 
-   cart.forEach((item)=>{
-    if(productId===item.productId){
-      matchingItem=item;
-    }
-   });
-
-   const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
-
-   const quantity = Number(quantitySelector.value);
-
-   if(matchingItem){
-    matchingItem.quantity+=quantity;
-   }else{
-
-     cart.push({
-       productId: productId,
-       quantity: quantity
-     });
-   }
-
-   //to calculate the cart quantity
-   /* 
-    (1) calculate the quantity
-    (2) put the quantity on page (using DOM)
-   */
-
-   let cartQuantity = 0;
-
-   cart.forEach((item)=>{
-    cartQuantity+=item.quantity;
-   })
-
-   document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+   
 
    const addedMessage = document.querySelector(
     `.js-added-to-cart-${productId}`
