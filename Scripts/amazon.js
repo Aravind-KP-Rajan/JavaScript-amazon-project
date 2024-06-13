@@ -157,7 +157,7 @@ function updateCartQuantity(){
 document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
     button.addEventListener('click', ()=>{
     // console.log('Added products')
-    const {productId} = button.dataset;
+    const {productId} = button.dataset.productId;
     
     //product-id is converted from kebab-case to camelCase productId
     // console.log(productName); 
