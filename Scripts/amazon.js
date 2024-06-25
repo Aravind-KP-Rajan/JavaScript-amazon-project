@@ -1,6 +1,6 @@
 //importing using module
 import { products } from '../data/products.js';
-import{cart /* as myCart */ , addToCart} from '../data/cart.js';
+import{cart /* as myCart */ , addToCart, calculateCartQuantity} from '../data/cart.js';
 import { formatCurrency } from './utils/money.js';
 
 
@@ -144,14 +144,19 @@ function updateCartQuantity(){
     (2) put the quantity on page (using DOM)
    */
 
-    let cartQuantity = 0;
+  /*   let cartQuantity = 0;
 
     cart.forEach((cartItem)=>{
      cartQuantity+=cartItem.quantity;
-    })
+    }); */
+
+    const cartQuantity = calculateCartQuantity();
+    
  
-    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+     document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+  
 }
+updateCartQuantity();
 
 //(3) Make it interactive
 
