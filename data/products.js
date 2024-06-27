@@ -66,6 +66,40 @@ extraInfoHtml () {
 
 }
 
+/*
+const date = new Date();
+
+console.log(date);
+console.log(date.toLocaleTimeString());
+*/
+
+/* ****************more info about THIS (this) keyword ********************** */
+
+/* console.log (this);
+using this inside an object
+
+const object2 = {
+  a:2,
+  b: this.a
+}; */
+
+/* function logThis(){
+  console.log(this);
+}
+
+logThis();
+//inside a function, we can change "this" to whatever we want using method .call();
+logThis.call('hello');
+
+
+const object3 = { //arrow function do not change value of this. this will have same value outside the function which is undefined
+  method: () => {
+    console.log(this);
+  }
+}
+object3.method();
+ */
+
 //converting all of our products from regular objects into class
 export const products = [
 
